@@ -1,5 +1,4 @@
 class PrFetcher
-  attr_reader :owner, :repo
   GITHUB_BASE_URL = 'https://api.github.com'
 
   def initialize(owner:, repo:)
@@ -12,12 +11,26 @@ class PrFetcher
   end
 
   def perform
-    HTTParty.get(repo_path)
+    fields_for_rss
   end
 
   private
 
+  attr_reader :owner, :repo
+
   def repo_path
     "#{GITHUB_BASE_URL}/repos/#{owner}/#{repo}/pulls"
+  end
+
+  def response
+    @response ||= HTTParty.get(repo_path)
+  end
+
+  def fields_for_rss
+    response.map do |pull|
+      { link: pull['html_url'],
+        title: pull['title'],
+        description: pull['body'] }
+    end
   end
 end
