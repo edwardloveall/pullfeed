@@ -31,6 +31,18 @@ describe 'Repo requests' do
       expect(first_item[:link]).to eq('https://github.com/github/code/pull/564')
       expect(first_item[:pubDate]).to eq('2015-05-05T07:50:40+00:00')
     end
+
+    it 'has item attributes' do
+      stub_github_request
+
+      get feed_path(owner: 'foo', repo: 'bar')
+
+      expect(first_item[:title]).to be
+      expect(first_item[:description]).to be
+      expect(first_item[:link]).to be
+      expect(first_item[:pubDate]).to be
+      expect(first_item[:guid]).to be
+    end
   end
 
   def xml

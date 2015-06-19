@@ -12,6 +12,7 @@ xml.rss version: '2.0' do
         xml.description pr.description
         xml.link pr.link
         xml.pubDate pr.created_at
+        xml.guid pr.guid
       end
     end
   end
