@@ -7,7 +7,7 @@ xml.rss version: '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' do
     xml.pubDate @repository.created_at.rfc822
     xml.lastBuildDate @repository.created_at.rfc822
 
-    @repository.pull_requests.each do |pr|
+    @repository.sorted_pull_requests.each do |pr|
       xml.item do
         xml.title pr.title
         xml.description pr.description
