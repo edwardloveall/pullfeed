@@ -1,4 +1,4 @@
-class PrFetcher
+class PullRequestFetcher
   GITHUB_BASE_URL = 'https://api.github.com'
 
   def initialize(owner:, repo:)
@@ -11,7 +11,7 @@ class PrFetcher
   end
 
   def perform
-    fields_for_rss
+    response
   end
 
   private
@@ -24,13 +24,5 @@ class PrFetcher
 
   def response
     @response ||= HTTParty.get(repo_path)
-  end
-
-  def fields_for_rss
-    response.map do |pull|
-      { link: pull['html_url'],
-        title: pull['title'],
-        description: pull['body'] }
-    end
   end
 end
