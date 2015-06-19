@@ -46,16 +46,6 @@ describe 'Repo requests' do
       expect(first_item[:guid]).to be
     end
 
-    it 'formats the dates according to the rfc822 standard' do
-      stub_github_request
-
-      get feed_path(owner: 'foo', repo: 'bar')
-
-      expect(xml[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
-      expect(xml[:lastBuildDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
-      expect(first_item[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
-    end
-
     it 'has item attributes' do
       stub_github_request
 
@@ -66,6 +56,16 @@ describe 'Repo requests' do
       expect(first_item[:link]).to be
       expect(first_item[:pubDate]).to be
       expect(first_item[:guid]).to be
+    end
+
+    it 'formats the dates according to the rfc822 standard' do
+      stub_github_request
+
+      get feed_path(owner: 'foo', repo: 'bar')
+
+      expect(xml[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
+      expect(xml[:lastBuildDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
+      expect(first_item[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
     end
   end
 
