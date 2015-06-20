@@ -13,4 +13,9 @@ class FeedsController < ApplicationController
   def repository_params
     { owner: params[:owner], repo: params[:repo] }
   end
+
+  def repository
+    @_repository ||= RepositoryPresenter.new(@repository)
+  end
+  helper_method :repository
 end
