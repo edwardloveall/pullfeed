@@ -15,11 +15,16 @@ describe 'Repo requests' do
 
       get feed_path(owner: 'github', repo: 'code')
 
-      expect(xml[:title]).to eq('code pull requests')
+      expect(xml[:title]).to eq('github/code pull requests')
       expect(xml[:description]).to eq('A repo with some really good code.')
       expect(xml[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
       expect(xml[:lastBuildDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
       expect(xml[:link]).to eq('https://github.com/github/code')
+      expect(xml['atom:link']).to eq({
+        href: 'http://www.example.com/feeds/github/code',
+        rel: 'self',
+        type: 'application/rss+xml'
+      })
     end
 
     it 'has item attributes' do
@@ -46,7 +51,11 @@ describe 'Repo requests' do
   end
 
   def xml
-    @_xml ||= Hash.from_xml(response.body)['rss']['channel'].deep_symbolize_keys
+    @_xml ||= Hash.from_xml(response.body)['rss']['channel'].tap do |feed|
+      feed.deep_symbolize_keys!
+      feed['atom:link'] = feed[:link].last
+      feed[:link] = feed[:link].first
+    end
   end
 
   def first_item
