@@ -1,7 +1,7 @@
 xml.instruct!
 xml.rss version: '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' do
   xml.channel do
-    xml.title @repository.title
+    xml.title "#{@repository.title} pull requests"
     xml.description @repository.description
     xml.link @repository.link
     xml.pubDate @repository.created_at.rfc822

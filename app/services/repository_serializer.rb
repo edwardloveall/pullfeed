@@ -20,8 +20,9 @@ class RepositorySerializer
       created_at: data.first['created_at'],
       description: base_attributes['description'],
       link: base_attributes['html_url'],
+      owner: base_attributes['owner']['login'],
       pull_requests: pull_requests,
-      title: "#{base_attributes['name']} pull requests"
+      title: base_attributes['name']
     }
   end
 

@@ -14,7 +14,8 @@ describe RepositorySerializer do
       expect(repository.created_at).to eq(Time.parse('2015-05-05T07:50:40Z'))
       expect(repository.description).to eq('A repo with some really good code.')
       expect(repository.link).to eq('https://github.com/github/code')
-      expect(repository.title).to eq('code pull requests')
+      expect(repository.owner).to eq('github')
+      expect(repository.title).to eq('code')
     end
 
     it 'serializes pull requests' do

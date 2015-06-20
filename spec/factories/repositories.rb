@@ -1,8 +1,10 @@
 FactoryGirl.define do
   factory :repository do
     created_at { DateTime.current.to_s }
-    description 'this fixed that one bug that has been annoying us for a while'
-    link 'http://github.com/foo/bar/pulls/1'
-    title 'Fix that one bug'
+    description 'this old codebase'
+    link 'http://github.com/foo/bar'
+    owner 'github'
+    pull_requests { [build(:pull_request), build(:pull_request)] }
+    title 'code'
   end
 end
