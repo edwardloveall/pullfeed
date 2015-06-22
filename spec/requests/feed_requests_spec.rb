@@ -30,38 +30,14 @@ describe 'Repo requests' do
       expect(first_item[:title]).to eq('Improve the code very much')
       expect(first_item[:description]).to eq('A very important pull request that makes the code much better.')
       expect(first_item[:link]).to eq('https://github.com/github/code/pull/564')
-      expect(first_item[:guid]).to eq('https://github.com/github/code/pull/564')
       expect(first_item[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
-    end
-
-    it 'has item attributes' do
-      stub_github_request
-
-      get feed_path(owner: 'foo', repo: 'bar')
-
-      expect(first_item[:title]).to be
-      expect(first_item[:description]).to be
-      expect(first_item[:link]).to be
-      expect(first_item[:pubDate]).to be
-      expect(first_item[:guid]).to be
-    end
-
-    it 'has item attributes' do
-      stub_github_request
-
-      get feed_path(owner: 'foo', repo: 'bar')
-
-      expect(first_item[:title]).to be
-      expect(first_item[:description]).to be
-      expect(first_item[:link]).to be
-      expect(first_item[:pubDate]).to be
-      expect(first_item[:guid]).to be
+      expect(first_item[:guid]).to eq('https://github.com/github/code/pull/564')
     end
 
     it 'formats the dates according to the rfc822 standard' do
       stub_github_request
 
-      get feed_path(owner: 'foo', repo: 'bar')
+      get feed_path(owner: 'github', repo: 'code')
 
       expect(xml[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
       expect(xml[:lastBuildDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
