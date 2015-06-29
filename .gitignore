@@ -12,3 +12,5 @@
 /public/assets
 /tags
 /tmp/*
+/pids/*
+/sockets/*
