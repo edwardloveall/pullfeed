@@ -1,3 +1,6 @@
+@include font-face(Signika, 'signika/signika-regular', 400, $asset-pipeline: true);
+@include font-face(Signika, 'signika/signika-semibold', 600, $asset-pipeline: true);
+
 body {
   @include font-feature-settings("kern", "liga", "pnum");
   -webkit-font-smoothing: antialiased;
