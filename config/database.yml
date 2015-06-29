@@ -10,3 +10,8 @@ development: &default
 test:
   <<: *default
   database: pr-rss_test
+
+production:
+  <<: *default
+  username: <%= ENV['PGUSER'] %>
+  password: <%= ENV['PULLFEED_DB_PASS'] %>
