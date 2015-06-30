@@ -1,0 +1,25 @@
+body,
+html {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  display: flex;
+  flex-grow: 1;
+}
+
+footer {
+  color: $medium-gray;
+  flex-grow: 0;
+  text-align: center;
+  padding: $base-spacing 0;
+
+  a {
+    color: $medium-gray;
+  }
+}

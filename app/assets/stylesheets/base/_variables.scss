@@ -17,14 +17,20 @@ $base-z-index: 0;
 
 // Colors
 $blue: #477dca;
-$dark-gray: #333;
-$medium-gray: #999;
+$dark-gray: #282828;
+$medium-gray: #828282;
 $light-gray: #ddd;
 
 // Font Colors
 $base-background-color: #fff;
 $base-font-color: $dark-gray;
 $action-color: $blue;
+
+// Font sizes
+$title-font-size: 70px;
+$subtitle-font-size: 20px;
+$title-letter-spacing: 1.5px;
+$logo-size: 159px;
 
 // Border
 $base-border-color: $light-gray;

@@ -1,0 +1,19 @@
+.logo {
+  background: transparent image-url('logo@2x.png') no-repeat;
+  background-size: $logo-size;
+  height: $logo-size;
+  margin: auto;
+  padding: $base-spacing 0 0 em($logo-size) + $base-spacing;
+
+  h1 {
+    font-size: $title-font-size;
+    letter-spacing: $title-letter-spacing;
+    margin-bottom: 0;
+  }
+
+  h3 {
+    color: $medium-gray;
+    font-size: $subtitle-font-size;
+    font-weight: 400;
+  }
+}
