@@ -4,6 +4,7 @@ ruby '2.2.1'
 
 gem 'autoprefixer-rails'
 gem 'bourbon', '~> 4.2.0'
+gem 'dotenv-rails'
 gem 'email_validator'
 gem 'flutie'
 gem 'high_voltage'
@@ -34,7 +35,6 @@ group :development, :test do
   gem 'awesome_print'
   gem 'bundler-audit', require: false
   gem 'byebug'
-  gem 'dotenv-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.1.0'
