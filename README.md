@@ -1,32 +1,34 @@
-# Pr-rss
+# Pull Feed
 
-## Getting Started
+Subscribe to Pull Requests via RSS
 
-After you have cloned this repo, run this setup script to set up your machine
-with the necessary dependencies to run and test this app:
+### Production Installation
 
-    % ./bin/setup
+This is designed to be deployed on a CentOS 7 server. It will need the following environment variables to be set in the global environment:
 
-It assumes you have a machine equipped with Ruby, Postgres, etc. If not, set up
-your machine with [this script].
+```shell
+export PULLFEED_PATH=/path/to/pullfeed
+export RAILS_ENV=production
+export RACK_ENV=production
+```
 
-[this script]: https://github.com/thoughtbot/laptop
+### Bundle
 
-After setting up, you can run the application using [foreman]:
+When running `bundle`, run with the `--deployment` option to install gems in the `/ventor/bundle` directory. This will compartmentalize the gems.
 
-    % foreman start
+### Starting and Stopping
 
-If you don't have `foreman`, see [Foreman's install instructions][foreman]. It
-is [purposefully excluded from the project's `Gemfile`][exclude].
+Starting
 
-[foreman]: https://github.com/ddollar/foreman
-[exclude]: https://github.com/ddollar/foreman/pull/437#issuecomment-41110407
+```shell
+# From the pullfeed directory
+bundle exec unicorn_rails -c config/unicorn.rb -D
+sudo service nginx restart
+```
 
-## Guidelines
+Stopping
 
-Use the following guides for getting things done, programming well, and
-programming in style.
-
-* [Protocol](http://github.com/thoughtbot/guides/blob/master/protocol)
-* [Best Practices](http://github.com/thoughtbot/guides/blob/master/best-practices)
-* [Style](http://github.com/thoughtbot/guides/blob/master/style)
+```shell
+# From the pullfeed directory
+kill -QUIT `cat pids/unicorn.pid`
+```
