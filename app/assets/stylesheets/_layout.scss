@@ -23,3 +23,7 @@ footer {
     color: $medium-gray;
   }
 }
+
+@include selection {
+  background-color: lighten($action-color, 30%);
+}
