@@ -1,4 +1,4 @@
-app_path = ENV.fetch('PULLFEED_PATH')
+app_path = '/var/www/pullfeed'
 
 # Set the working application directory
 working_directory app_path

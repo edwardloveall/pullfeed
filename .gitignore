@@ -14,3 +14,5 @@
 /tmp/*
 /pids/*
 /sockets/*
+/vendor/bundle
+/vendor/cache
