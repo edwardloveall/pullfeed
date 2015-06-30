@@ -1,19 +1,7 @@
 en:
-  date:
-    formats:
-      default:
-        "%m/%d/%Y"
-      with_weekday:
-        "%a %m/%d/%y"
-
-  time:
-    formats:
-      default:
-        "%a, %b %-d, %Y at %r"
-      date:
-        "%b %-d, %Y"
-      short:
-        "%B %d"
+  strings:
+    creator: Edward Loveall
 
   titles:
     application: Pull Feed
+    tag_line: Subscribe to Pull Requests via RSS
