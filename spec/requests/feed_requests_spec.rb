@@ -33,7 +33,7 @@ describe 'Repo requests' do
       get feed_path(owner: 'github', repo: 'code')
 
       expect(first_item[:title]).to eq('Improve the code very much')
-      expect(first_item[:description]).to eq('A very important pull request that makes the code much better.')
+      expect(first_item[:description]).to eq(html_description)
       expect(first_item[:link]).to eq('https://github.com/github/code/pull/564')
       expect(first_item[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
       expect(first_item[:guid]).to eq('https://github.com/github/code/pull/564')
@@ -66,5 +66,9 @@ describe 'Repo requests' do
     stub_request(:get, /.*api.github.com.*/).
       to_return(body: fixture_load('github', 'pulls.json'),
                 headers: { 'Content-Type' => 'application/json' })
+  end
+
+  def html_description
+    "<p>A very important pull request that makes the <code>code</code> much better.</p>\n"
   end
 end

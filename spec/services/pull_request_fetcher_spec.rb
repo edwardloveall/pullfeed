@@ -21,7 +21,7 @@ describe PullRequestFetcher do
 
     expect(pull['html_url']).to eq('https://github.com/github/code/pull/564')
     expect(pull['title']).to eq('Improve the code very much')
-    expect(pull['body']).to eq("A very important pull request that makes the code much better.")
+    expect(pull['body']).to eq("A very important pull request that makes the `code` much better.")
   end
 
   def stub_github_response(url)
