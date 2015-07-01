@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe RepositoryPresenter do
-  describe '.def_delegators' do
+  describe 'delegations' do
     it 'delegates methods to its repository' do
       repository = build(:repository)
       presenter = RepositoryPresenter.new(repository)
