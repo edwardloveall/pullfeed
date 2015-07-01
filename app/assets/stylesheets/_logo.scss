@@ -1,9 +1,15 @@
 .logo {
-  background: transparent image-url('logo@2x.png') no-repeat;
+  background: transparent image-url('logo@2x.png') no-repeat top center;
   background-size: $logo-size;
   height: $logo-size;
-  margin: auto;
-  padding: $base-spacing 0 0 em($logo-size) + $base-spacing;
+  margin: $base-spacing auto 0;
+  padding: em($logo-size) + $base-spacing 0 0 0;
+
+  @include media(min-width $medium-screen) {
+    background-position: top left;
+    margin: auto;
+    padding: $base-spacing 0 0 em($logo-size) + $base-spacing;
+  }
 
   h1 {
     font-size: $title-font-size;
