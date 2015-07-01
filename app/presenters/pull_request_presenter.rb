@@ -1,8 +1,11 @@
 require 'active_support/core_ext/module/delegation'
 
 class PullRequestPresenter
+  attr_reader :pull_request
+
   delegate :created_at,
            :description,
+           :guid,
            :link,
            :title,
            to: :@pull_request

@@ -18,6 +18,16 @@ class RepositoryPresenter
     "#{repository.owner}/#{repository.title} pull requests"
   end
 
+  def sorted_pull_requests
+    @sorted ||= pull_requests.sort { |a, b| b.created_at <=> a.created_at }
+  end
+
+  def presented_pull_requests
+    @parsed ||= sorted_pull_requests.map do |request|
+      PullRequestPresenter.new(request)
+    end
+  end
+
   private
 
   attr_reader :repository

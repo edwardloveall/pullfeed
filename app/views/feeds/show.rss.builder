@@ -11,10 +11,10 @@ xml.rss version: '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' do
              rel: 'self',
              type: 'application/rss+xml'
 
-    repository.sorted_pull_requests.each do |pr|
+    repository.presented_pull_requests.each do |pr|
       xml.item do
         xml.title pr.title
-        xml.description MarkdownRenderer.new(pr.description).to_html
+        xml.description pr.html_description
         xml.link pr.link
         xml.pubDate pr.created_at.rfc822
         xml.guid pr.guid

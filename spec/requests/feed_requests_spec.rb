@@ -4,7 +4,6 @@ describe 'Repo requests' do
   describe 'GET /feeds/:owner/:repo' do
     it 'returns an rss response' do
       stub_github_request
-
       get feed_path(owner: 'github', repo: 'code')
 
       expect(response.content_type).to eq(Mime::Type.lookup_by_extension(:rss))

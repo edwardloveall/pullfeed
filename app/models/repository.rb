@@ -7,10 +7,6 @@ class Repository
                 :pull_requests,
                 :title
 
-  def sorted_pull_requests
-    @sorted ||= pull_requests.sort { |a, b| b.created_at <=> a.created_at }
-  end
-
   def language
     'en-us'
   end

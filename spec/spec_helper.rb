@@ -16,7 +16,9 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+  config.filter_run :focus
   config.order = :random
+  config.run_all_when_everything_filtered = true
 end
 
 WebMock.disable_net_connect!(allow_localhost: true)
