@@ -18,10 +18,14 @@ class PullRequestSerializer
   def pull_request_attributes
     {
       author: data['user']['login'],
-      created_at: data['created_at'],
+      created_at: created_at,
       description: data['body'],
       link: data['html_url'],
       title: data['title']
     }
+  end
+
+  def created_at
+    DateTime.parse(data['created_at'])
   end
 end

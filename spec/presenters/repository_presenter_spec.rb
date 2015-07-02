@@ -26,8 +26,8 @@ describe RepositoryPresenter do
 
   describe '#sorted_pull_requests' do
     it 'returns pull requests in newest to oldest order' do
-      older = build(:pull_request, created_at: '2000-05-20T00:00:00Z')
-      newer = build(:pull_request, created_at: '2000-05-21T00:00:00Z')
+      older = build(:pull_request, created_at: 5.days.ago)
+      newer = build(:pull_request, created_at: 2.days.ago)
       repository = build(:repository, pull_requests: [older, newer])
 
       presenter = RepositoryPresenter.new(repository)

@@ -17,7 +17,7 @@ class RepositorySerializer
 
   def repository_attributes
     {
-      created_at: data.first['created_at'],
+      created_at: created_at,
       description: base_attributes['description'],
       link: base_attributes['html_url'],
       owner: base_attributes['owner']['login'],
@@ -34,5 +34,9 @@ class RepositorySerializer
     @data.map do |pull_request_data|
       PullRequestSerializer.perform(pull_request_data)
     end
+  end
+
+  def created_at
+    DateTime.parse(data.first['created_at'])
   end
 end

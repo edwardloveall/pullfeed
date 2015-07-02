@@ -7,10 +7,6 @@ class PullRequest
                 :link,
                 :title
 
-  def created_at=(created_at)
-    @created_at = DateTime.parse(created_at)
-  end
-
   def guid
     link
   end

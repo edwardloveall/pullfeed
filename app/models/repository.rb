@@ -10,8 +10,4 @@ class Repository
   def language
     'en-us'
   end
-
-  def created_at=(created_at)
-    @created_at = DateTime.parse(created_at)
-  end
 end
