@@ -9,7 +9,6 @@ describe PullRequestPresenter do
       expect(presenter.author).to eq(pull_request.author)
       expect(presenter.created_at).to eq(pull_request.created_at)
       expect(presenter.description).to eq(pull_request.description)
-      expect(presenter.guid).to eq(pull_request.guid)
       expect(presenter.link).to eq(pull_request.link)
       expect(presenter.title).to eq(pull_request.title)
     end

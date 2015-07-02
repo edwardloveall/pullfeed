@@ -2,64 +2,57 @@ require 'rails_helper'
 
 describe 'Repo requests' do
   describe 'GET /feeds/:owner/:repo' do
-    it 'returns an rss response' do
+    it 'returns an atom response' do
       stub_github_request
       get feed_path(owner: 'github', repo: 'code')
 
-      expect(response.content_type).to eq(Mime::Type.lookup_by_extension(:rss))
+      expect(response.content_type).to eq(Mime::Type.lookup_by_extension(:atom))
     end
 
-    it 'has channel attributes' do
+    it 'has feed attributes' do
       stub_github_request
 
       get feed_path(owner: 'github', repo: 'code')
 
       expect(xml[:title]).to eq('github/code pull requests')
-      expect(xml[:description]).to eq('A repo with some really good code.')
-      expect(xml[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
-      expect(xml[:lastBuildDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
-      expect(xml[:link]).to eq('https://github.com/github/code')
-      expect(xml['atom:link']).to eq({
-        href: 'http://www.example.com/feeds/github/code',
-        rel: 'self',
-        type: 'application/rss+xml'
+      expect(xml[:subtitle]).to eq('A repo with some really good code.')
+      expect(xml[:updated]).to eq('2015-05-05T07:50:40+00:00')
+      expect(xml[:link]).to eq(feed_link)
+      expect(xml[:author][:name]).to eq('github')
+    end
+
+    it 'has entry attributes' do
+      stub_github_request
+
+      get feed_path(owner: 'github', repo: 'code')
+
+      expect(first_entry[:title]).to eq('Improve the code very much')
+      expect(first_entry[:content]).to eq(html_content)
+      expect(first_entry[:link]).to eq({
+        href: 'https://github.com/github/code/pull/564',
+        rel: 'alternate'
       })
+      expect(first_entry[:published]).to eq('2015-05-05T07:50:40+00:00')
+      expect(first_entry[:updated]).to eq('2015-05-05T07:50:40+00:00')
+      expect(first_entry[:id]).to eq('https://github.com/github/code/pull/564')
+      expect(first_entry[:author][:name]).to eq('john-doe')
     end
 
-    it 'has item attributes' do
+    it 'formats the dates according to the ISO8601 standard' do
       stub_github_request
 
       get feed_path(owner: 'github', repo: 'code')
-
-      expect(first_item[:title]).to eq('Improve the code very much')
-      expect(first_item[:description]).to eq(html_description)
-      expect(first_item[:link]).to eq('https://github.com/github/code/pull/564')
-      expect(first_item[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
-      expect(first_item[:guid]).to eq('https://github.com/github/code/pull/564')
-      expect(first_item[:author][:name]).to eq('john-doe')
-    end
-
-    it 'formats the dates according to the rfc822 standard' do
-      stub_github_request
-
-      get feed_path(owner: 'github', repo: 'code')
-
-      expect(xml[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
-      expect(xml[:lastBuildDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
-      expect(first_item[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
+      expect(xml[:updated]).to eq('2015-05-05T07:50:40+00:00')
+      expect(first_entry[:published]).to eq('2015-05-05T07:50:40+00:00')
     end
   end
 
   def xml
-    @_xml ||= Hash.from_xml(response.body)['rss']['channel'].tap do |feed|
-      feed.deep_symbolize_keys!
-      feed['atom:link'] = feed[:link].last
-      feed[:link] = feed[:link].first
-    end
+    @_xml ||= Hash.from_xml(response.body)['feed'].deep_symbolize_keys
   end
 
-  def first_item
-    @_first_item = xml[:item].first
+  def first_entry
+    @_first_entry = xml[:entry].first
   end
 
   def stub_github_request
@@ -68,7 +61,14 @@ describe 'Repo requests' do
                 headers: { 'Content-Type' => 'application/json' })
   end
 
-  def html_description
+  def html_content
     "<p>A very important pull request that makes the <code>code</code> much better.</p>\n"
+  end
+
+  def feed_link
+    [{ rel: 'alternate', type: 'text/html', href: 'http://www.example.com' },
+     { rel: 'self',
+       type: 'application/atom+xml',
+       href: 'http://www.example.com/feeds/github/code' }]
   end
 end

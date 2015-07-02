@@ -6,7 +6,6 @@ class PullRequestPresenter
   delegate :author,
            :created_at,
            :description,
-           :guid,
            :link,
            :title,
            to: :@pull_request

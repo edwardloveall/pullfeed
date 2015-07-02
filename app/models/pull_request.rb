@@ -6,8 +6,4 @@ class PullRequest
                 :description,
                 :link,
                 :title
-
-  def guid
-    link
-  end
 end

@@ -4,7 +4,7 @@ class FeedsController < ApplicationController
     @repository = RepositorySerializer.perform(data)
 
     respond_to do |format|
-      format.rss { render layout: false }
+      format.atom { render layout: false }
     end
   end
 
