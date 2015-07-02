@@ -24,4 +24,15 @@ describe PullRequestPresenter do
       expect(presenter.html_description).to eq(html)
     end
   end
+
+  describe '#tag_uri' do
+    it 'formats the date and link to a valid uri' do
+      created_at = DateTime.parse('2015-07-02T14:30:15Z')
+      pull_request = build(:pull_request, created_at: created_at)
+
+      presenter = PullRequestPresenter.new(pull_request)
+
+      expect(presenter.tag_uri).to eq('tag:pullfeed.co,2015-07-02:/github/code/pull/1')
+    end
+  end
 end

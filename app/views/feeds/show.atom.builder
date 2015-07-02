@@ -13,7 +13,7 @@ atom_feed do |feed|
       entry.link(href: pr.link, rel: :alternate)
       entry.published pr.created_at
       entry.updated pr.created_at
-      entry.id pr.link
+      entry.id pr.tag_uri
       entry.author do |author|
         author.name pr.author
       end

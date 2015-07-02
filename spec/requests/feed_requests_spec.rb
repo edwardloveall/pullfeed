@@ -34,7 +34,7 @@ describe 'Repo requests' do
       })
       expect(first_entry[:published]).to eq('2015-05-05T07:50:40+00:00')
       expect(first_entry[:updated]).to eq('2015-05-05T07:50:40+00:00')
-      expect(first_entry[:id]).to eq('https://github.com/github/code/pull/564')
+      expect(first_entry[:id]).to eq('tag:pullfeed.co,2015-05-05:/github/code/pull/564')
       expect(first_entry[:author][:name]).to eq('john-doe')
     end
 

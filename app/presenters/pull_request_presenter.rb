@@ -17,4 +17,12 @@ class PullRequestPresenter
   def html_description
     MarkdownRenderer.new(@pull_request.description).to_html
   end
+
+  def tag_uri
+    unchanging_hostname = 'pullfeed.co'
+    date = created_at.to_date.to_s
+    path = URI(link).path
+
+    "tag:#{unchanging_hostname},#{date}:#{path}"
+  end
 end
