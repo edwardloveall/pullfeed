@@ -13,6 +13,9 @@ xml.rss version: '2.0', 'xmlns:atom' => 'http://www.w3.org/2005/Atom' do
 
     repository.presented_pull_requests.each do |pr|
       xml.item do
+        xml.author do
+          xml.name pr.author
+        end
         xml.title pr.title
         xml.description pr.html_description
         xml.link pr.link

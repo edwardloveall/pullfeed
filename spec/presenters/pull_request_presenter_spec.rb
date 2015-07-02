@@ -6,6 +6,7 @@ describe PullRequestPresenter do
       pull_request = build(:pull_request)
       presenter = PullRequestPresenter.new(pull_request)
 
+      expect(presenter.author).to eq(pull_request.author)
       expect(presenter.created_at).to eq(pull_request.created_at)
       expect(presenter.description).to eq(pull_request.description)
       expect(presenter.guid).to eq(pull_request.guid)

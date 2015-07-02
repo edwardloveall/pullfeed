@@ -17,6 +17,7 @@ class PullRequestSerializer
 
   def pull_request_attributes
     {
+      author: data['user']['login'],
       created_at: data['created_at'],
       description: data['body'],
       link: data['html_url'],

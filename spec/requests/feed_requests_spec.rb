@@ -36,6 +36,7 @@ describe 'Repo requests' do
       expect(first_item[:link]).to eq('https://github.com/github/code/pull/564')
       expect(first_item[:pubDate]).to eq('Tue, 5 May 2015 07:50:40 +0000')
       expect(first_item[:guid]).to eq('https://github.com/github/code/pull/564')
+      expect(first_item[:author][:name]).to eq('john-doe')
     end
 
     it 'formats the dates according to the rfc822 standard' do

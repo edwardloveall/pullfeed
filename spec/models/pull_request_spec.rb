@@ -17,5 +17,4 @@ describe PullRequest do
       expect(pull_request.guid).to eq(pull_request.link)
     end
   end
-
 end
