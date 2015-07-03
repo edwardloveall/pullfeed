@@ -4,16 +4,20 @@ $heading-font-family: $base-font-family;
 
 // Font Sizes
 $base-font-size: 1em;
+$small-font-size: 0.7em;
 
 // Line height
 $base-line-height: 1.5;
 $heading-line-height: 1.2;
 
 // Other Sizes
-$base-border-radius: 3px;
+$base-border-radius: 2px;
 $base-spacing: $base-line-height * 1em;
 $small-spacing: $base-spacing / 2;
 $base-z-index: 0;
+$logo-size: 159px;
+$text-width: 300px;
+$logo-container: em($logo-size) + em($text-width) + $base-spacing;
 
 // Colors
 $blue: #477dca;
@@ -31,7 +35,6 @@ $action-color: $orange;
 $title-font-size: 70px;
 $subtitle-font-size: 20px;
 $title-letter-spacing: 1.5px;
-$logo-size: 159px;
 
 // Border
 $base-border-color: $light-gray;

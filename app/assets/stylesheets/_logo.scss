@@ -1,14 +1,17 @@
 .logo {
   background: transparent image-url('logo@2x.png') no-repeat top center;
   background-size: $logo-size;
-  height: $logo-size;
+  flex: 0 0 auto;
   margin: $base-spacing auto 0;
+  text-align: center;
   padding: em($logo-size) + $base-spacing 0 0 0;
 
   @include media(min-width $medium-screen) {
     background-position: top left;
-    margin: auto;
+    margin: golden-ratio($base-spacing, 4) auto 0;
+    min-height: $logo-size;
     padding: $base-spacing 0 0 em($logo-size) + $base-spacing;
+    text-align: left;
   }
 
   h1 {

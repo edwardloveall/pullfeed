@@ -2,3 +2,16 @@
   <h1><%= t('titles.application') %></h1>
   <h3><%= t('titles.tag_line') %></h3>
 </section>
+<section class="link-builder">
+  <div class="wrap">
+    <div class="field owner">
+      <%= label_tag(:owner) %>
+      <%= text_field_tag(:owner) %>
+    </div>
+    <div class="field repository">
+      <%= label_tag(:repository) %>
+      <%= text_field_tag(:repository) %>
+    </div>
+  </div>
+  <%= link_to 'Feed Link', nil, class: [:hidden, :feed] %>
+</section>

@@ -1,3 +1,5 @@
+$vetical-padding: 0.75em;
+
 #{$all-button-inputs},
 button {
   @include appearance(none);
@@ -12,10 +14,10 @@ button {
   font-size: $base-font-size;
   font-weight: 600;
   line-height: 1;
-  padding: 0.75em 1em;
+  padding: $vetical-padding 1em;
   text-decoration: none;
   user-select: none;
-  vertical-align: middle;
+  vertical-align: $vetical-padding;
   white-space: nowrap;
 
   &:hover,
