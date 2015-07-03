@@ -5,7 +5,7 @@ class MarkdownRenderer
   RENDERER_OPTIONS = { with_toc_data: true }
 
   def initialize(markdown)
-    @markdown = markdown
+    @markdown = markdown || ''
   end
 
   def to_html

@@ -37,6 +37,12 @@ describe MarkdownRenderer do
         <h1 id="hello-world">Hello, <code>world</code>!</h1>
       HTML
     end
+
+    it 'renders even when passed nil' do
+      renderer = MarkdownRenderer.new(nil)
+
+      expect(renderer.to_html).to eq('')
+    end
   end
 
   def markdown
