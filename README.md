@@ -1,6 +1,18 @@
 # Pull Feed
 
-Subscribe to Pull Requests via RSS
+Have you ever wanted to keep up with a GitHub repository, but you don't want notifications about everything that happens? This app generates an Atom feed of a given repository's incoming pull requests. Now, you can keep up with all of the open source projects you want on your terms.
+
+Visit http://pullfeed.co to get the feed URL, or just use for format:
+
+```
+http://pullfeed.co/feeds/owner/repository
+```
+
+For example:
+
+* [pullfeed.co/feeds/github/linguist](http://pullfeed.co/feeds/github/linguist)
+* [pullfeed.co/feeds/thoughtbot/til](http://pullfeed.co/feeds/thoughtbot/til)
+* [pullfeed.co/feeds/edwardloveall/pullfeed](http://pullfeed.co/feeds/edwardloveall/pullfeed)
 
 ### Production Installation
 
