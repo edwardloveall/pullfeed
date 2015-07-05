@@ -1,6 +1,6 @@
 development: &default
   adapter: postgresql
-  database: pr-rss_development
+  database: pullfeed_development
   encoding: utf8
   host: localhost
   min_messages: warning
@@ -9,7 +9,7 @@ development: &default
 
 test:
   <<: *default
-  database: pr-rss_test
+  database: pullfeed_test
 
 production:
   <<: *default
