@@ -6,7 +6,6 @@ search:
     - "app/views"
 
 ignore_unused:
-  - activerecord.*
   - date.*
   - simple_form.*
   - time.*

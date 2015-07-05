@@ -129,7 +129,6 @@ GEM
     normalize-rails (3.0.3)
     oj (2.12.5)
     oj_mimic_json (1.0.1)
-    pg (0.18.1)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -263,7 +262,6 @@ DEPENDENCIES
   normalize-rails (~> 3.0.0)
   oj
   oj_mimic_json
-  pg
   pry-rails
   rack-timeout
   rails (= 4.2.1)
