@@ -5,3 +5,5 @@ en:
   titles:
     application: Pull Feed
     tag_line: Subscribe to GitHub Pull Requests
+    head_title: Pull Feed - Subscribe to GitHub Pull Requests
+    keywords: github,pull request,rss,atom,feed,subscribe,open source,notification
