@@ -1,0 +1,40 @@
+#!/usr/bin/env sh
+
+# Exit if any subcommand fails
+set -e
+
+if [ ! "$SSH_CONNECTION" ]; then
+  echo "Run this from the app's directory on the server"; exit
+fi
+
+# Check for new code
+if [ `git rev-parse --abbrev-ref HEAD` = "master" ]; then
+  git pull origin master
+else
+  echo "Please switch to master branch before deploying"; exit
+fi
+
+# Update bundled gems if needed
+bundle check || bundle install --deployment
+
+# Migrate databases
+# bundle exec rake db:migrate
+
+# recomiple assets
+rake assets:clobber assets:precompile
+
+# Stop Unicorn
+if (ls pids | grep "unicorn.pid" > /dev/null); then
+  echo  "Stopping unicorn..."
+  kill -QUIT `cat pids/unicorn.pid`
+fi
+
+# Start Unicorn
+echo  "Starting unicorn..."
+bundle exec unicorn_rails -c config/unicorn.rb -D
+
+# Restart nginx
+echo "Restarting nginx..."
+sudo service nginx restart
+
+echo "Deploy script successful!"
