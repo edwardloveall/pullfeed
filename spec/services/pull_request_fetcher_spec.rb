@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe PullRequestFetcher do
   it 'fetches the open PRs from github' do
-    params = { owner: 'thoughtbot', repo: 'suspenders' }
+    params = { owner: 'github', repo: 'code' }
     url = github_url(params)
     stub_github_response(url)
 
@@ -12,7 +12,7 @@ describe PullRequestFetcher do
   end
 
   it 'returns the data needed to make a feed' do
-    params = { owner: 'thoughtbot', repo: 'suspenders' }
+    params = { owner: 'github', repo: 'code' }
     url = github_url(params)
     stub_github_response(url)
 

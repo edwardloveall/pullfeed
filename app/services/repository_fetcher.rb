@@ -1,4 +1,4 @@
-class PullRequestFetcher
+class RepositoryFetcher
   GITHUB_BASE_URL = 'https://api.github.com'.freeze
 
   def initialize(owner:, repo:)
@@ -19,7 +19,7 @@ class PullRequestFetcher
   attr_reader :owner, :repo
 
   def repo_path
-    "#{GITHUB_BASE_URL}/repos/#{owner}/#{repo}/pulls"
+    "#{GITHUB_BASE_URL}/repos/#{owner}/#{repo}"
   end
 
   def response
