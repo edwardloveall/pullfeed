@@ -21,7 +21,7 @@ rake assets:clobber assets:precompile
 
 # Stop Unicorn
 if (ls pids | grep "unicorn.pid" > /dev/null); then
-  echo  "Stoping unicorn..."
+  echo  "Stopping unicorn..."
   kill -QUIT `cat pids/unicorn.pid`
 fi
 
