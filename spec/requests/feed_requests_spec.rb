@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'Repo requests' do
+describe 'Feed requests' do
   describe 'GET /feeds/:owner/:repo' do
     it 'returns an atom response' do
       stub_github_request
