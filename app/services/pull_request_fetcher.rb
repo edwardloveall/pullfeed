@@ -11,7 +11,11 @@ class PullRequestFetcher
   end
 
   def perform
-    response
+    if !response.empty?
+      response
+    else
+      repository_response
+    end
   end
 
   private
@@ -23,6 +27,10 @@ class PullRequestFetcher
   end
 
   def response
-    @response ||= HTTParty.get(repo_path)
+    @_response ||= HTTParty.get(repo_path)
+  end
+
+  def repository_response
+    RepositoryFetcher.perform(owner: owner, repo: repo)
   end
 end

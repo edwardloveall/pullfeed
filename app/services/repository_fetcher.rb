@@ -23,6 +23,6 @@ class RepositoryFetcher
   end
 
   def response
-    @response ||= HTTParty.get(repo_path)
+    @_response ||= HTTParty.get(repo_path)
   end
 end
