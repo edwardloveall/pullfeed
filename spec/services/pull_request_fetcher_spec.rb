@@ -3,7 +3,7 @@ require 'rails_helper'
 describe PullRequestFetcher do
   context 'when repository has pull requests' do
     it 'fetches the open PRs from github' do
-      params = {owner: 'github', repo: 'code'}
+      params = { owner: 'github', repo: 'code' }
       url = 'https://api.github.com/repos/github/code/pulls'
       stub_github_response(url, fixture_load('github', 'pulls.json'))
 
@@ -13,7 +13,7 @@ describe PullRequestFetcher do
     end
 
     it 'returns the data needed to make a feed' do
-      params = {owner: 'github', repo: 'code'}
+      params = { owner: 'github', repo: 'code' }
       url = 'https://api.github.com/repos/github/code/pulls'
       stub_github_response(url, fixture_load('github', 'pulls.json'))
 
@@ -30,7 +30,7 @@ describe PullRequestFetcher do
 
   context 'when repository has no pull requests' do
     it 'fetches the repository instead after fetching the pulls url' do
-      params = {owner: 'github', repo: 'code'}
+      params = { owner: 'github', repo: 'code' }
       pull_url = 'https://api.github.com/repos/github/code/pulls'
       stub_github_response(pull_url, fixture_load('github', 'pulls_empty.json'))
       repo_url = 'https://api.github.com/repos/github/code'
@@ -43,7 +43,7 @@ describe PullRequestFetcher do
     end
 
     it 'returns the data needed to make a Repository' do
-      params = {owner: 'github', repo: 'code'}
+      params = { owner: 'github', repo: 'code' }
       pull_url = 'https://api.github.com/repos/github/code/pulls'
       stub_github_response(pull_url, fixture_load('github', 'pulls_empty.json'))
       repo_url = 'https://api.github.com/repos/github/code'

@@ -28,13 +28,14 @@ describe 'Feed requests' do
 
       expect(first_entry[:title]).to eq('Improve the code very much')
       expect(first_entry[:content]).to eq(html_content)
-      expect(first_entry[:link]).to eq({
+      expect(first_entry[:link]).to eq(
         href: 'https://github.com/github/code/pull/564',
         rel: 'alternate'
-      })
+      )
       expect(first_entry[:published]).to eq('2015-05-05T07:50:40+00:00')
       expect(first_entry[:updated]).to eq('2015-05-05T07:50:40+00:00')
-      expect(first_entry[:id]).to eq('tag:pullfeed.co,2015-05-05:/github/code/pull/564')
+      expect(first_entry[:id]).
+        to eq('tag:pullfeed.co,2015-05-05:/github/code/pull/564')
       expect(first_entry[:author][:name]).to eq('john-doe')
     end
 
