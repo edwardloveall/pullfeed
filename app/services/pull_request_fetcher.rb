@@ -11,7 +11,9 @@ class PullRequestFetcher
   end
 
   def perform
-    if !response.empty?
+    if response.code == 404
+      raise RepositoryNotFound
+    elsif !response.empty?
       response
     else
       repository_response
@@ -32,5 +34,8 @@ class PullRequestFetcher
 
   def repository_response
     RepositoryFetcher.perform(owner: owner, repo: repo)
+  end
+
+  class RepositoryNotFound < StandardError
   end
 end

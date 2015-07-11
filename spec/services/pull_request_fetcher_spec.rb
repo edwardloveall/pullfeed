@@ -59,6 +59,19 @@ describe PullRequestFetcher do
     end
   end
 
+  context "when a repository doesn't exist" do
+    it 'raises a not found error' do
+      stub_request(:get, bad_url).
+        to_return(body: fixture_load('github', '404.json'),
+                  headers: { 'Content-Type' => 'application/json' },
+                  status: 404)
+
+      expect {
+        PullRequestFetcher.perform(owner: 'foo', repo: 'bar')
+      }.to raise_error(PullRequestFetcher::RepositoryNotFound)
+    end
+  end
+
   def stub_github_response(url, response)
     stub_request(:get, url).
       to_return(body: response,
@@ -67,5 +80,9 @@ describe PullRequestFetcher do
 
   def github_url(owner:, repo:)
     "https://api.github.com/repos/#{owner}/#{repo}/pulls"
+  end
+
+  def bad_url
+    'https://api.github.com/repos/foo/bar/pulls'
   end
 end
