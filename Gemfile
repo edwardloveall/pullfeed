@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.2.1'
 
+gem 'airbrake'
 gem 'autoprefixer-rails'
 gem 'bourbon', '~> 4.2.0'
 gem 'dotenv-rails'
