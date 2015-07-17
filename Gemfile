@@ -24,7 +24,6 @@ gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'title'
 gem 'uglifier'
-gem 'unicorn'
 
 group :development, :test do
   gem 'awesome_print'
