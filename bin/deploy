@@ -4,14 +4,14 @@
 set -e
 
 if [ ! "$SSH_CONNECTION" ]; then
-  echo "Run this from the app's directory on the server"; exit
+  echo "Run this from the app's directory on the server."; exit
 fi
 
 # Check for new code
 if [ `git rev-parse --abbrev-ref HEAD` = "master" ]; then
   git pull origin master
 else
-  echo "Please switch to master branch before deploying"; exit
+  echo "Please switch to master branch before deploying."; exit
 fi
 
 # Update bundled gems if needed
@@ -23,15 +23,13 @@ bundle check || bundle install --deployment
 # recomiple assets
 rake assets:clobber assets:precompile
 
-# Stop Unicorn
-if (ls pids | grep "unicorn.pid" > /dev/null); then
-  echo  "Stopping unicorn..."
-  kill -QUIT `cat pids/unicorn.pid`
+# Restart puma
+if (ls pids | grep "puma.pid" > /dev/null); then
+  echo "Restarting puma..."
+  bundle exec pumactl -P pids/puma.pid restart
+else
+  echo "There was no pid file for puma. Try and restart puma a different way."; exit
 fi
-
-# Start Unicorn
-echo  "Starting unicorn..."
-bundle exec unicorn_rails -c config/unicorn.rb -D
 
 # Restart nginx
 echo "Restarting nginx..."

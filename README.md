@@ -34,7 +34,7 @@ Starting
 
 ```shell
 # From the pullfeed directory
-bundle exec unicorn_rails -c config/unicorn.rb -D
+bundle exec puma -d -b unix:///var/www/pullfeed/sockets/puma.sock --pidfile /var/www/pullfeed/pids/puma.pid
 sudo service nginx restart
 ```
 
@@ -42,5 +42,12 @@ Stopping
 
 ```shell
 # From the pullfeed directory
-kill -QUIT `cat pids/unicorn.pid`
+bundle exec pumactl -P pids/puma.pid stop
+```
+
+Restarting
+
+```shell
+bundle exec pumactl -P pids/puma.pid restart
+sudo service nginx restart
 ```
