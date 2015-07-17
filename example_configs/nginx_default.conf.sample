@@ -1,0 +1,32 @@
+upstream app {
+    # Path to Puma SOCK file
+    server unix:/var/www/pullfeed/sockets/puma.sock fail_timeout=0;
+}
+
+server {
+    # redirect www to non-sub domain
+    listen 80;
+    server_name www.pullfeed.co;
+    return 301 http://pullfeed.co;
+}
+
+server {
+    listen 80;
+    server_name 45.55.154.225 pullfeed.co;
+
+    # Application root, as defined previously
+    root /var/www/pullfeed/public;
+
+    try_files $uri/index.html $uri @app;
+
+    location @app {
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header Host $http_host;
+        proxy_redirect off;
+        proxy_pass http://app;
+    }
+
+    error_page 500 502 503 504 /500.html;
+    client_max_body_size 4G;
+    keepalive_timeout 10;
+}
