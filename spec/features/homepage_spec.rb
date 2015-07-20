@@ -18,14 +18,4 @@ feature 'Guest visits homeapge' do
       expect(page).to have_link('Source code')
     end
   end
-
-  scenario 'gets url for repository feed', js: true do
-    visit '/'
-    fill_in :owner, with: 'github'
-    fill_in :repository, with: 'code'
-
-    link = find('a.feed', match: :first)
-
-    expect(link[:href]).to match(%r{/feeds/github/code})
-  end
 end

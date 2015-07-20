@@ -2,16 +2,7 @@
   <h1><%= t('titles.application') %></h1>
   <h3><%= t('titles.tag_line') %></h3>
 </section>
-<section class="link-builder">
-  <div class="wrap">
-    <div class="field owner">
-      <%= label_tag(:owner) %>
-      <%= text_field_tag(:owner) %>
-    </div>
-    <div class="field repository">
-      <%= label_tag(:repository) %>
-      <%= text_field_tag(:repository) %>
-    </div>
-  </div>
-  <%= link_to 'Feed Link', nil, class: [:hidden, :feed] %>
-</section>
+<article class="explanation">
+  <p>Pull Feed keeps you up to date on a GitHub repository via a news feed of incoming pull requests. The format for a feed of a particular repository is: http://pullfeed.co/feeds/<strong>owner</strong>/<strong>repository</strong>. For example: <%= link_to feed_url(owner: 'edwardloveall', repo: 'pullfeed'), feed_url(owner: 'edwardloveall', repo: 'pullfeed') %> is the feed url for this codebase.</p>
+  <p>Enter the feed url into your feed reader to subscribe to GitHub pull requests.</p>
+</article>
