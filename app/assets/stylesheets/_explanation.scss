@@ -1,7 +1,8 @@
 .explanation {
+  background-color: $off-white;
+  border: $base-border;
+  border-radius: $base-border-radius;
+  font-size: $font-size-small;
   margin-top: golden-ratio($base-spacing, 2);
-
-  strong {
-    color: $action-color;
-  }
+  padding: $base-spacing;
 }
