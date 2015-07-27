@@ -1,7 +1,10 @@
 class FeedsController < ApplicationController
+  include MixpanelAnalytics
+
   def show
     data = PullRequestFetcher.perform(repository_params)
     @repository = RepositorySerializer.perform(data)
+    requested_feed(repository_params)
 
     respond_to do |format|
       format.atom { render layout: false }

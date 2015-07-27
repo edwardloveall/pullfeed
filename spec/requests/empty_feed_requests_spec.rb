@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 describe 'Empty feed requests' do
+  before(:each) do
+    allow(Mixpanel::Tracker).to receive(:new).and_return(spy)
+  end
+
   describe 'GET /feeds/:owner/:repo' do
     context 'when a repo has no pull requests' do
       it 'returns an atom response' do

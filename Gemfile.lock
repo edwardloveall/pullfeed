@@ -122,6 +122,7 @@ GEM
     mime-types (2.5)
     mini_portile (0.6.2)
     minitest (5.6.1)
+    mixpanel-ruby (2.2.0)
     multi_json (1.11.2)
     multi_xml (0.5.5)
     neat (1.7.2)
@@ -258,6 +259,7 @@ DEPENDENCIES
   i18n-tasks
   jquery-rails
   launchy
+  mixpanel-ruby
   neat (~> 1.7.0)
   normalize-rails (~> 3.0.0)
   oj
