@@ -23,4 +23,10 @@
   <meta name="twitter:title" content="<%= t('titles.application') %>" />
   <meta name="twitter:description" content="<%= t('titles.tag_line') %>" />
   <meta name="twitter:image" content="<%= asset_url('twitter_card.png') %>" />
+
+  <%# Facebook OpenGraph -%>
+  <meta property="og:title" content="<%= t('titles.application') %>" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="<%= root_url %>" />
+  <meta property="og:image" content="<%= asset_url('padded_logo.png') %>" />
 </head>
