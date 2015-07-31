@@ -1,0 +1,26 @@
+<head>
+  <%# Technical -%>
+  <meta charset="utf-8" />
+  <meta name="ROBOTS" content="NOODP" />
+  <%= csrf_meta_tags %>
+
+  <%# User Facing -%>
+  <title><%= t('titles.head_title') %></title>
+  <%= favicon_link_tag('favicon@2x.png') %>
+
+  <%# Content -%>
+  <meta name="viewport" content="initial-scale=1" />
+  <%= stylesheet_link_tag :application, media: 'all' %>
+
+  <%# SEO -%>
+  <link rel="canonical" href="https://pullfeed.co/">
+  <link rel="author" href="humans.txt" />
+  <meta name="description" content="<%= t('titles.tag_line') %>">
+  <meta name="keywords" content="<%= t('titles.keywords') %>">
+
+  <%# Twitter Card %>
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="<%= t('titles.application') %>" />
+  <meta name="twitter:description" content="<%= t('titles.tag_line') %>" />
+  <meta name="twitter:image" content="<%= asset_url('twitter_card.png') %>" />
+</head>

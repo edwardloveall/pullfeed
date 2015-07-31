@@ -1,18 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="ROBOTS" content="NOODP" />
-  <meta name="viewport" content="initial-scale=1" />
-  <title><%= t('titles.head_title') %></title>
-  <%= stylesheet_link_tag :application, media: 'all' %>
-  <%= csrf_meta_tags %>
-
-  <link rel="author" href="humans.txt" />
-  <%= favicon_link_tag('favicon@2x.png') %>
-  <meta name="description" content="<%= t('titles.tag_line') %>">
-  <meta name="keywords" content="<%= t('titles.keywords') %>">
-</head>
+<%= render 'head' %>
 <body class="<%= body_class %>">
   <%= render 'flashes' -%>
   <main>
