@@ -2,30 +2,21 @@ require 'mixpanel-ruby'
 load 'app/services/mixpanel_analytics.rb'
 
 describe MixpanelAnalytics do
-  describe '#requested_feed' do
+  describe '.requested_feed' do
     it 'calls Mixpanel::Tracker.track' do
+      request = FakeRequest.new
       tracker = spy('tracker')
       allow(Mixpanel::Tracker).to receive(:new).and_return(tracker)
 
-      FakeController.new.track_test
+      MixpanelAnalytics.requested_feed(owner: 'github',
+                                       repo: 'code',
+                                       request: request)
 
       expect(tracker).to have_received(:track)
     end
   end
 
-  class FakeRequest;
+  class FakeRequest
     attr_reader :remote_ip
-  end
-
-  class FakeController
-    include MixpanelAnalytics
-
-    def track_test
-      requested_feed(owner: 'github', repo: 'code')
-    end
-
-    def request
-      FakeRequest.new
-    end
   end
 end
