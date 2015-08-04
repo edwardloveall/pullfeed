@@ -2,12 +2,21 @@ require 'rails_helper'
 
 describe Analytics do
   describe '#requested_feed' do
-    it 'delegates to KeenAnalytics' do
+    before(:each) do
       allow(KeenAnalytics).to receive(:requested_feed)
+      allow(MixpanelAnalytics).to receive(:requested_feed)
+    end
 
+    it 'delegates to KeenAnalytics' do
       FakeController.new.track_test
 
       expect(KeenAnalytics).to have_received(:requested_feed)
+    end
+
+    it 'delegates to MixpanelAnalytics' do
+      FakeController.new.track_test
+
+      expect(MixpanelAnalytics).to have_received(:requested_feed)
     end
   end
 
