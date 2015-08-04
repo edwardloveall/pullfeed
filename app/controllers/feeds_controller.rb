@@ -1,5 +1,5 @@
 class FeedsController < ApplicationController
-  include MixpanelAnalytics
+  include Analytics
 
   def show
     data = PullRequestFetcher.perform(repository_params)
