@@ -25,6 +25,7 @@ gem 'redcarpet'
 gem 'refills'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
+gem 'skylight'
 gem 'title'
 gem 'uglifier'
 

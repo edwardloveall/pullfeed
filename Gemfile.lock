@@ -210,6 +210,8 @@ GEM
       json (~> 1.8)
       simplecov-html (~> 0.10.0)
     simplecov-html (0.10.0)
+    skylight (0.9.2)
+      activesupport (>= 3.0.0)
     slop (3.6.0)
     sprockets (3.1.0)
       rack (~> 1.0)
@@ -280,6 +282,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   simplecov
+  skylight
   timecop
   title
   uglifier
