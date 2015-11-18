@@ -12,12 +12,6 @@ describe Analytics do
 
       expect(KeenAnalytics).to have_received(:requested_feed)
     end
-
-    it 'delegates to MixpanelAnalytics' do
-      FakeController.new.track_test
-
-      expect(MixpanelAnalytics).to have_received(:requested_feed)
-    end
   end
 
   class FakeRequest
