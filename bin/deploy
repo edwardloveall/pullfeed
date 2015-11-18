@@ -15,7 +15,7 @@ else
 fi
 
 # Update bundled gems if needed
-bundle check || bundle install --deployment
+bundle check || bundle install --deployment --without test development
 
 # Migrate databases
 # bundle exec rake db:migrate
