@@ -4,7 +4,6 @@ describe Analytics do
   describe '#requested_feed' do
     before(:each) do
       allow(KeenAnalytics).to receive(:requested_feed)
-      allow(MixpanelAnalytics).to receive(:requested_feed)
     end
 
     it 'delegates to KeenAnalytics' do
