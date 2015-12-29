@@ -22,3 +22,6 @@ stdout_redirect "#{app_dir}/log/puma.stdout.log",
 pidfile "#{app_dir}/pids/puma.pid"
 state_path "#{app_dir}/pids/puma.state"
 activate_control_app
+
+# Run in the background
+daemonize true
