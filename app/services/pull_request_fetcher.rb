@@ -29,7 +29,11 @@ class PullRequestFetcher
   end
 
   def response
-    @_response ||= HTTParty.get(repo_path)
+    @_response ||= HTTParty.get(repo_path, headers: authorization_headers)
+  end
+
+  def authorization_headers
+    { 'Authorization' => "token #{ENV['GITHUB_ACCESS_TOKEN']}" }
   end
 
   def repository_response

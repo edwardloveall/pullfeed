@@ -25,6 +25,19 @@ describe RepositoryFetcher do
     expect(result['html_url']).to eq('https://github.com/github/code')
   end
 
+  it 'requests the URL with authorization' do
+    token = '0123456789abcdef'
+    ENV['GITHUB_ACCESS_TOKEN'] = token
+    params = { owner: 'github', repo: 'code' }
+    url = github_url(params)
+    stub_github_response(url)
+
+    RepositoryFetcher.perform(params)
+
+    expect(WebMock).to have_requested(:get, url).
+                    with(headers: { 'Authorization' => "token #{token}" })
+  end
+
   def stub_github_response(url)
     stub_request(:get, url).
       to_return(body: fixture_load('github', 'repository.json'),

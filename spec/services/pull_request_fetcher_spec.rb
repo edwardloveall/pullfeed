@@ -72,6 +72,19 @@ describe PullRequestFetcher do
     end
   end
 
+  it 'requests the URL with authorization' do
+    token = '0123456789abcdef'
+    ENV['GITHUB_ACCESS_TOKEN'] = token
+    params = { owner: 'github', repo: 'code' }
+    url = 'https://api.github.com/repos/github/code/pulls'
+    stub_github_response(url, fixture_load('github', 'pulls.json'))
+
+    PullRequestFetcher.perform(params)
+
+    expect(WebMock).to have_requested(:get, url).
+                    with(headers: { 'Authorization' => "token #{token}" })
+  end
+
   def stub_github_response(url, response)
     stub_request(:get, url).
       to_return(body: response,
