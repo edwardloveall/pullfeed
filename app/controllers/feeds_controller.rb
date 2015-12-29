@@ -7,7 +7,7 @@ class FeedsController < ApplicationController
     requested_feed(repository_params)
 
     respond_to do |format|
-      format.atom { render layout: false }
+      format.atom { fresh_when @repository }
     end
   end
 
