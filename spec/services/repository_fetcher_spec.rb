@@ -25,7 +25,7 @@ describe RepositoryFetcher do
     expect(result['html_url']).to eq('https://github.com/github/code')
   end
 
-  it 'requests the URL with authorization' do
+  it 'requests the URL with Authorization headers' do
     token = '0123456789abcdef'
     ENV['GITHUB_ACCESS_TOKEN'] = token
     params = { owner: 'github', repo: 'code' }
@@ -36,6 +36,19 @@ describe RepositoryFetcher do
 
     expect(WebMock).to have_requested(:get, url).
                     with(headers: { 'Authorization' => "token #{token}" })
+  end
+
+  it 'requests the URL with User Agent headers' do
+    username = 'edwardloveall'
+    ENV['GITHUB_USERNAME'] = username
+    params = { owner: 'github', repo: 'code' }
+    url = github_url(params)
+    stub_github_response(url)
+
+    RepositoryFetcher.perform(params)
+
+    expect(WebMock).to have_requested(:get, url).
+                    with(headers: { 'User-Agent' => username })
   end
 
   def stub_github_response(url)

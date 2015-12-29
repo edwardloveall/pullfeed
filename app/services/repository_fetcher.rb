@@ -23,10 +23,11 @@ class RepositoryFetcher
   end
 
   def response
-    @_response ||= HTTParty.get(repo_path, headers: authorization_headers)
+    @_response ||= HTTParty.get(repo_path, headers: headers)
   end
 
-  def authorization_headers
-    { 'Authorization' => "token #{ENV['GITHUB_ACCESS_TOKEN']}" }
+  def headers
+    { 'Authorization' => "token #{ENV['GITHUB_ACCESS_TOKEN']}",
+      'User-Agent' => ENV['GITHUB_USERNAME'] }
   end
 end
