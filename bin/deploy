@@ -26,7 +26,7 @@ rake assets:clobber assets:precompile
 # Restart puma
 if (ls pids | grep "puma.pid" > /dev/null); then
   echo "Restarting puma..."
-  bundle exec pumactl -P pids/puma.pid restart
+  bundle exec pumactl -C config/puma.rb restart
 else
   echo "There was no pid file for puma. Try and restart puma a different way."; exit
 fi
