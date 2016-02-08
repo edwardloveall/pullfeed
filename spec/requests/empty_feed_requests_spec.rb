@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe 'Empty feed requests' do
-  before(:each) do
-    allow(KeenAnalytics).to receive(:requested_feed).and_return(spy)
-  end
-
   describe 'GET /feeds/:owner/:repo' do
     context 'when a repo has no pull requests' do
       it 'returns an atom response' do

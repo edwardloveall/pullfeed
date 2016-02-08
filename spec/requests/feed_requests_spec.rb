@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe 'Feed requests' do
-  before(:each) do
-    allow(KeenAnalytics).to receive(:requested_feed).and_return(spy)
-  end
-
   describe 'GET /feeds/:owner/:repo' do
     it 'returns an atom response' do
       stub_github_request
