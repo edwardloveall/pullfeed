@@ -141,6 +141,7 @@ GEM
     oj_mimic_json (1.0.1)
     parser (2.2.3.0)
       ast (>= 1.1, < 3.0)
+    pg (0.18.4)
     pry (0.10.3)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -277,6 +278,7 @@ DEPENDENCIES
   normalize-rails (~> 3.0.0)
   oj
   oj_mimic_json
+  pg
   pry-rails
   puma
   rack-timeout
