@@ -13,5 +13,12 @@ test:
 
 production:
   <<: *default
+  database: pullfeed_production
+  username: <%= ENV['DB_USER'] %>
+  password: <%= ENV['DB_PASS'] %>
+
+staging:
+  <<: *default
+  database: pullfeed_staging
   username: <%= ENV['DB_USER'] %>
   password: <%= ENV['DB_PASS'] %>
