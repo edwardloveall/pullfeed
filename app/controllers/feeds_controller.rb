@@ -2,6 +2,7 @@ class FeedsController < ApplicationController
   def show
     data = PullRequestFetcher.perform(repository_params)
     @repository = RepositorySerializer.perform(data)
+    RepositoryFetch.create(repository_params)
 
     respond_to do |format|
       format.atom { fresh_when @repository }
