@@ -11,17 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160330175943) do
+ActiveRecord::Schema.define(version: 20160331190459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "repository_fetches", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "owner"
-    t.string   "repo"
-  end
 
   create_table "subscriptions", force: :cascade do |t|
     t.datetime "created_at",            null: false
