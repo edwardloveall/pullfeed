@@ -24,8 +24,8 @@ RSpec.describe FeedsController do
       expect(RepositorySerializer).to have_received(:perform).with(data)
     end
 
-    it 'creates a new RepositoryFetch' do
-      expect(RepositoryFetch.count).to be(0)
+    it 'creates a new Subscription' do
+      expect(Subscription.count).to be(0)
 
       allow(PullRequestFetcher).to receive(:perform)
       allow(RepositorySerializer).to receive(:perform)
@@ -33,7 +33,7 @@ RSpec.describe FeedsController do
 
       get :show, params.merge(format: :atom)
 
-      expect(RepositoryFetch.count).to eq(1)
+      expect(Subscription.count).to eq(1)
     end
   end
 end
