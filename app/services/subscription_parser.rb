@@ -131,7 +131,12 @@ class SubscriptionParser
       'AppEngine-Googleappid' => 'Google App Engine',
       'Googlebot' => 'Googlebot',
       'UniversalFeedParser' => 'UniversalFeedParser',
-      'Opera' => 'Opera'
+      'Opera' => 'Opera',
+      'Feeds/' => 'Feeds App',
+      'Blogtrottr' => 'Blogtrottr',
+      'rawdog' => 'rawdog',
+      'com.apple.Safari.WebFeedParser' => 'Safari Built-in',
+      'spbot' => 'OpenLinkProfiler'
     }
   end
 end
