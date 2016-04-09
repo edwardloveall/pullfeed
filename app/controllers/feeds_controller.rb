@@ -4,9 +4,7 @@ class FeedsController < ApplicationController
     @repository = RepositorySerializer.perform(data)
     SubscriptionLogger.perform(request)
 
-    respond_to do |format|
-      format.atom { fresh_when @repository }
-    end
+    fresh_when @repository.created_at
   end
 
   private

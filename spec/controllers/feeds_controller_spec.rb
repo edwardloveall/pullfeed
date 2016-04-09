@@ -14,9 +14,10 @@ RSpec.describe FeedsController do
     end
 
     it 'calls RepositorySerializer' do
-      data = JSON.parse(fixture_load('github', 'pulls.json'))
+      data = {}
+      repository = build(:repository)
       allow(PullRequestFetcher).to receive(:perform).and_return(data)
-      allow(RepositorySerializer).to receive(:perform)
+      allow(RepositorySerializer).to receive(:perform).and_return(repository)
       params = { owner: 'github', repo: 'code' }
 
       get :show, params.merge(format: :atom)
@@ -27,8 +28,10 @@ RSpec.describe FeedsController do
     it 'creates a new Subscription' do
       expect(Subscription.count).to be(0)
 
+      repository = build(:repository)
+
       allow(PullRequestFetcher).to receive(:perform)
-      allow(RepositorySerializer).to receive(:perform)
+      allow(RepositorySerializer).to receive(:perform).and_return(repository)
       params = { owner: 'github', repo: 'code' }
 
       get :show, params.merge(format: :atom)

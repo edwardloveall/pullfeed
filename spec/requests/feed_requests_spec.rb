@@ -46,6 +46,36 @@ describe 'Feed requests' do
       expect(xml[:updated]).to eq('2015-05-05T07:50:40+00:00')
       expect(first_entry[:published]).to eq('2015-05-05T07:50:40+00:00')
     end
+
+    it 'returns a 304 when there are no new PRs' do
+      stub_github_request
+      path = feed_path(owner: 'github', repo: 'code')
+
+      get path
+
+      headers = { 'HTTP_IF_NONE_MATCH' => response.etag }
+
+      get(path, {}, headers)
+
+      expect(response).to have_http_status(:not_modified)
+    end
+
+    it 'returns a 200 when there are new PRs' do
+      stub_github_request
+      path = feed_path(owner: 'github', repo: 'code')
+
+      get path
+
+      headers = { 'HTTP_IF_NONE_MATCH' => response.etag }
+
+      stub_request(:get, /.*api.github.com.*/).
+        to_return(body: fixture_load('github', 'different_pulls.json'),
+                  headers: { 'Content-Type' => 'application/json' })
+
+      get(path, {}, headers)
+
+      expect(response).to have_http_status(:ok)
+    end
   end
 
   def xml
