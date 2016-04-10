@@ -21,7 +21,7 @@ bundle check || bundle install --deployment --without test development
 bundle exec rake db:migrate
 
 # recomiple assets
-rake assets:precompile
+bundle exec rake assets:precompile
 
 # Restart puma
 if (ls pids | grep "puma.pid" > /dev/null); then
