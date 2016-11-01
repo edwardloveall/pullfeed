@@ -16,7 +16,8 @@ class RepositorySerializer
   attr_reader :data
 
   def parsed_data
-    if data.is_a?(Array)
+    parsed_data = data.parsed_response
+    if has_pull_requests?(parsed_data)
       { repository: data.first['base']['repo'], pull_requests: data }
     else
       { repository: data, pull_requests: [] }
@@ -54,5 +55,9 @@ class RepositorySerializer
     else
       DateTime.parse(repository_data['created_at'])
     end
+  end
+
+  def has_pull_requests?(data)
+    data.is_a?(Array)
   end
 end
