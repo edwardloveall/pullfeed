@@ -14,7 +14,7 @@ class PullRequestFetcher
     if response.code == 404
       raise RepositoryNotFound
     elsif !response.empty?
-      response
+      response.parsed_response
     else
       repository_response
     end

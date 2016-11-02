@@ -11,7 +11,7 @@ class RepositoryFetcher
   end
 
   def perform
-    response
+    response.parsed_response
   end
 
   private

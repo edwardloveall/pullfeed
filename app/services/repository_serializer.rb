@@ -16,8 +16,7 @@ class RepositorySerializer
   attr_reader :data
 
   def parsed_data
-    parsed_data = data.parsed_response
-    if has_pull_requests?(parsed_data)
+    if has_pull_requests?(data)
       { repository: data.first['base']['repo'], pull_requests: data }
     else
       { repository: data, pull_requests: [] }
