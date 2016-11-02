@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -22,8 +21,7 @@ ActiveRecord::Schema.define(version: 20160331190459) do
     t.integer  "number_of_subscribers"
     t.string   "repository"
     t.string   "subscriber"
+    t.index ["repository"], name: "index_subscriptions_on_repository", using: :btree
   end
-
-  add_index "subscriptions", ["repository"], name: "index_subscriptions_on_repository", using: :btree
 
 end
