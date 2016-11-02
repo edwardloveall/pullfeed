@@ -55,7 +55,7 @@ describe 'Feed requests' do
 
       headers = { 'HTTP_IF_NONE_MATCH' => response.etag }
 
-      get(path, {}, headers)
+      get(path, params: {}, headers: headers)
 
       expect(response).to have_http_status(:not_modified)
     end
@@ -72,7 +72,7 @@ describe 'Feed requests' do
         to_return(body: fixture_load('github', 'different_pulls.json'),
                   headers: { 'Content-Type' => 'application/json' })
 
-      get(path, {}, headers)
+      get(path, params: {}, headers: headers)
 
       expect(response).to have_http_status(:ok)
     end

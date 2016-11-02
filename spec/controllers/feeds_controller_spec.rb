@@ -7,7 +7,7 @@ RSpec.describe FeedsController do
       allow(PullRequestFetcher).to receive(:perform).and_return(data)
       params = { owner: 'github', repo: 'code' }
 
-      get :show, params.merge(format: :atom)
+      get :show, params: params.merge(format: :atom)
 
       expect(PullRequestFetcher).
         to have_received(:perform).with(hash_including(params))
@@ -20,7 +20,7 @@ RSpec.describe FeedsController do
       allow(RepositorySerializer).to receive(:perform).and_return(repository)
       params = { owner: 'github', repo: 'code' }
 
-      get :show, params.merge(format: :atom)
+      get :show, params: params.merge(format: :atom)
 
       expect(RepositorySerializer).to have_received(:perform).with(data)
     end
@@ -34,7 +34,7 @@ RSpec.describe FeedsController do
       allow(RepositorySerializer).to receive(:perform).and_return(repository)
       params = { owner: 'github', repo: 'code' }
 
-      get :show, params.merge(format: :atom)
+      get :show, params: params.merge(format: :atom)
 
       expect(Subscription.count).to eq(1)
     end
