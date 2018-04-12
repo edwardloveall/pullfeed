@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :pull_request do
     created_at { DateTime.current }
     description 'this fixed that one bug that has been annoying us for a while'

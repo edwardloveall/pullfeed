@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :repository do
     created_at { DateTime.current.to_s }
     description 'this old codebase'
