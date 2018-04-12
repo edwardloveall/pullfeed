@@ -1,2 +1,0 @@
-application: oPmafqt99K7k
-authentication: <%= ENV['SKYLIGHT_AUTHENTICATION'] %>

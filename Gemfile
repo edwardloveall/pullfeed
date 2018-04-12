@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 ruby '2.4.1'
 
-gem 'airbrake', '~> 5.2'
 gem 'autoprefixer-rails', '~> 6'
 gem 'bourbon', '~> 4.2.0'
 gem 'dotenv-rails'
@@ -25,7 +24,6 @@ gem 'redcarpet'
 gem 'refills'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
-gem 'skylight'
 gem 'title'
 gem 'uglifier'
 
