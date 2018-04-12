@@ -16,3 +16,4 @@
 /sockets/*
 /vendor/bundle
 /vendor/cache
+shared
