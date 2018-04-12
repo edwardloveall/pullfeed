@@ -102,16 +102,6 @@ GEM
     httparty (0.14.0)
       multi_xml (>= 0.5.2)
     i18n (0.7.0)
-    i18n-tasks (0.9.6)
-      activesupport (>= 4.0.2)
-      ast (>= 2.1.0)
-      easy_translate (>= 0.5.0)
-      erubis
-      highline (>= 1.7.3)
-      i18n
-      parser (>= 2.2.3.0)
-      term-ansicolor (>= 1.3.2)
-      terminal-table (>= 1.5.1)
     jquery-rails (4.2.1)
       rails-dom-testing (>= 1, < 3)
       railties (>= 4.2.0)
@@ -277,7 +267,6 @@ DEPENDENCIES
   formulaic
   high_voltage
   httparty
-  i18n-tasks
   jquery-rails
   keen
   launchy
@@ -285,7 +274,7 @@ DEPENDENCIES
   normalize-rails (~> 3.0.0)
   oj (~> 2.15.0)
   oj_mimic_json
-  parser (~> 2.3.0.7)
+  parser
   pg
   pry-rails
   puma (~> 2)
