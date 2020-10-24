@@ -19,5 +19,3 @@ RSpec.configure do |config|
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = false
 end
-
-Capybara.javascript_driver = :webkit

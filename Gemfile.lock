@@ -64,9 +64,10 @@ GEM
       rack (>= 1.6.0)
       rack-test (>= 0.6.3)
       xpath (~> 3.0)
-    capybara-webkit (1.15.0)
-      capybara (>= 2.3, < 4.0)
-      json
+    capybara-selenium (0.0.6)
+      capybara
+      selenium-webdriver
+    childprocess (3.0.0)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
     crack (0.4.3)
@@ -198,6 +199,7 @@ GEM
       rspec-mocks (~> 3.7.0)
       rspec-support (~> 3.7.0)
     rspec-support (3.7.1)
+    rubyzip (2.3.0)
     safe_yaml (1.0.4)
     sass (3.5.6)
       sass-listen (~> 4.0.0)
@@ -210,6 +212,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    selenium-webdriver (3.142.7)
+      childprocess (>= 0.5, < 4.0)
+      rubyzip (>= 1.2.2)
     shoulda-matchers (3.1.2)
       activesupport (>= 4.0.0)
     simple_form (4.0.0)
@@ -257,7 +262,7 @@ DEPENDENCIES
   bourbon (~> 4.2.0)
   bundler-audit
   byebug
-  capybara-webkit (>= 1.2.0)
+  capybara-selenium
   database_cleaner
   dotenv-rails
   email_validator
@@ -296,4 +301,4 @@ RUBY VERSION
    ruby 2.4.1p111
 
 BUNDLED WITH
-   1.15.4
+   1.17.3
