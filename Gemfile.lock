@@ -145,7 +145,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.2)
-    puma (3.10.0)
+    puma (3.12.6)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -281,7 +281,7 @@ DEPENDENCIES
   parser
   pg
   pry-rails
-  puma (~> 3.10.0)
+  puma (~> 3.12.6)
   rack-timeout
   rails (~> 5.0)
   recipient_interceptor
