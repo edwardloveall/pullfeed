@@ -121,7 +121,9 @@ GEM
     marcel (0.3.2)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
-    mimemagic (0.3.2)
+    mimemagic (0.3.10)
+      nokogiri (~> 1)
+      rake
     mini_mime (1.0.0)
     mini_portile2 (2.4.0)
     minitest (5.14.2)
@@ -145,7 +147,8 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (3.0.2)
-    puma (3.12.6)
+    puma (4.3.8)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -281,7 +284,7 @@ DEPENDENCIES
   parser
   pg
   pry-rails
-  puma (~> 3.12.6)
+  puma (~> 4.3.8)
   rack-timeout
   rails (~> 5.0)
   recipient_interceptor
