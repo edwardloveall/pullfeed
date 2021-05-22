@@ -12,7 +12,6 @@ state_path "#{shared_dir}/pids/puma.state"
 if rails_env != "development"
   bind "unix://#{shared_dir}/sockets/puma.sock"
   workers Concurrent.processor_count
-  daemonize true
   stdout_redirect(
     "#{app_dir}/log/puma.stdout.log",
     "#{app_dir}/log/puma.stderr.log",

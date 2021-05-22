@@ -1,38 +1,7 @@
 #!/usr/bin/env sh
 
-# Exit if any subcommand fails
-set -e
-
-if [ ! "$SSH_CONNECTION" ]; then
-  echo "Run this from the app's directory on the server."; exit
-fi
-
-# Check for new code
-if [ `git rev-parse --abbrev-ref HEAD` = "master" ]; then
-  git pull origin master
-else
-  echo "Please switch to master branch before deploying."; exit
-fi
-
-# Update bundled gems if needed
-bundle check || bundle install --deployment --without test development
-
-# Migrate databases
+bundle
 bundle exec rails db:migrate
-
-# recomiple assets
 bundle exec rails assets:precompile
-
-# Restart puma
-if (ls pids | grep "puma.pid" > /dev/null); then
-  echo "Restarting puma..."
-  bundle exec pumactl -C config/puma.rb restart
-else
-  echo "There was no pid file for puma. Try and restart puma a different way."; exit
-fi
-
-# Restart nginx
-echo "Restarting nginx..."
+sudo service pullfeed restart
 sudo service nginx restart
-
-echo "Deploy script successful!"
