@@ -1,0 +1,25 @@
+[Unit]
+Description=Pullfeed Puma HTTP Server
+After=network.target
+
+[Service]
+Type=simple
+User=pullfeed
+WorkingDirectory=/var/www/pullfeed
+Environment=PATH=/home/pullfeed/.rubies/ruby-2.4.1/bin:/home/pullfeed/.gem/ruby/2.4.1/bin:/home/pullfeed/.rubies/ruby-2.4.1/bin:/usr/local/sbin:/usr/local/bin:/usr/bin
+Environment=GEM_PATH=/home/pullfeed/.gem/ruby/2.4.1:/home/pullfeed/.rubies/ruby-2.4.1/lib/ruby/gems/2.4.0
+Environment=GEM_HOME=/home/pullfeed/.gem/ruby/2.4.1
+Environment=ASSET_HOST=pullfeed.co
+Environment=DB_USER=pullfeed
+Environment=DB_PASS=xxx
+Environment=GITHUB_ACCESS_TOKEN=ghp_xxx
+Environment=GITHUB_USERNAME=edwardloveall
+Environment=HOST=pullfeed.co
+Environment=RAILS_ENV=production
+Environment=RACK_ENV=production
+Environment=SECRET_KEY_BASE=xxx
+ExecStart=/var/www/pullfeed/bin/puma -C /var/www/pullfeed/config/puma.rb
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
