@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160331190459) do
+ActiveRecord::Schema.define(version: 2016_03_31_190459) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "subscriptions", force: :cascade do |t|
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.integer  "number_of_subscribers"
-    t.string   "repository"
-    t.string   "subscriber"
-    t.index ["repository"], name: "index_subscriptions_on_repository", using: :btree
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "number_of_subscribers"
+    t.string "repository"
+    t.string "subscriber"
+    t.index ["repository"], name: "index_subscriptions_on_repository"
   end
 
 end
