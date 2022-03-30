@@ -132,7 +132,7 @@ GEM
     neat (1.7.4)
       bourbon (>= 4.0)
       sass (>= 3.3)
-    nio4r (2.3.0)
+    nio4r (2.5.8)
     nokogiri (1.10.10)
       mini_portile2 (~> 2.4.0)
     normalize-rails (3.0.3)
@@ -147,7 +147,7 @@ GEM
     pry-rails (0.3.6)
       pry (>= 0.10.4)
     public_suffix (4.0.6)
-    puma (4.3.8)
+    puma (4.3.12)
       nio4r (~> 2.0)
     rack (2.2.3)
     rack-test (1.1.0)
@@ -284,7 +284,7 @@ DEPENDENCIES
   parser
   pg
   pry-rails
-  puma (~> 4.3.8)
+  puma (~> 4.3.12)
   rack-timeout
   rails (~> 5.0)
   recipient_interceptor
