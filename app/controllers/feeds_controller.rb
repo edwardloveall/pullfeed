@@ -10,7 +10,7 @@ class FeedsController < ApplicationController
   private
 
   def repository_params
-    { owner: params[:owner], repo: params[:repo] }
+    { owner: params[:owner], repo: params[:repo], q: params[:q] }
   end
 
   def repository

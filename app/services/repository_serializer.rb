@@ -1,6 +1,6 @@
 class RepositorySerializer
   def initialize(data)
-    @data = data
+    @parsed_data = data
   end
 
   def self.perform(data)
@@ -13,15 +13,7 @@ class RepositorySerializer
 
   private
 
-  attr_reader :data
-
-  def parsed_data
-    if has_pull_requests?(data)
-      { repository: data.first['base']['repo'], pull_requests: data }
-    else
-      { repository: data, pull_requests: [] }
-    end
-  end
+  attr_reader :parsed_data
 
   def repository_data
     @_repository_data = parsed_data[:repository]
@@ -54,9 +46,5 @@ class RepositorySerializer
     else
       DateTime.parse(repository_data['created_at'])
     end
-  end
-
-  def has_pull_requests?(data)
-    data.is_a?(Array)
   end
 end

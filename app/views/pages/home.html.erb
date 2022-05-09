@@ -6,4 +6,5 @@
   <h2>About</h2>
   <p>Pull Feed keeps you up to date with a GitHub repository via a news feed of incoming pull requests. The feed url is based off of a GitHub project's owner and repository name: http://pullfeed.co/feeds/<strong>owner</strong>/<strong>repository</strong>. For example: <%= link_to feed_url(owner: 'edwardloveall', repo: 'pullfeed'), feed_url(owner: 'edwardloveall', repo: 'pullfeed') %> is the feed url for this codebase.</p>
   <p>Enter the feed url into your feed reader to subscribe to GitHub pull requests.</p>
+  <p>You can subscribe to a filtered list of pull requests using an optional q parameter: http://pullfeed.co/feeds/<strong>owner</strong>/<strong>repository</strong>?q=<strong>search</strong>. This parameter supports GitHub's <a href="https://docs.github.com/en/search-github/getting-started-with-searching-on-github/understanding-the-search-syntax">search syntax</a>.</p>
 </article>

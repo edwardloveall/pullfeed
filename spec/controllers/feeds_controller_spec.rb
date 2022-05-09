@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe FeedsController do
   describe '#show' do
     it 'calls PullRequestFetcher' do
-      data = JSON.parse(fixture_load('github', 'pulls.json'))
+      pulls = JSON.parse(fixture_load('github', 'pulls.json'))
+      data = { repository: pulls.first['base']['repo'], pull_requests: pulls }
       allow(PullRequestFetcher).to receive(:perform).and_return(data)
       params = { owner: 'github', repo: 'code' }
 
